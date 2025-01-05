@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MESSAGE</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: url("images/Business Event Website.png");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Ensure body takes full height */
+            overflow-y: scroll; /* Allow the page to scroll */
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            background-color: #ff99aa;
+            font-size: 2em;
+            font-family: 'Sacramento', cursive;
+            font-weight: bold;
+            position: relative;
+            padding: 20px 0;
+            color: white;
+            font-size: 2.5em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .container h1 {
+            color: #ff99aa;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .message {
+            font-size: 1.2em;
+            color: #fff;
+            white-space: pre-wrap; /* Maintain line breaks */
+            word-wrap: break-word; /* Ensure long words break */
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #ff99aa;
+            color: white;
+            font-size: 1.1em;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        .start-audio {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #ff99aa;
+            color: white;
+            border: none;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .start-audio:hover {
+            background-color: #ff6699;
+        }
+
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 9999;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff99aa;
+            border-radius: 50%;
+            animation: fall 5s linear infinite;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            color: white;
+            background-color: #ff6680;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            background-color: #ff3366;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            header {
+                font-size: 2em;
+                padding: 15px 0;
+            }
+
+            .container {
+                width: 90%;
+                margin: 30px auto;
+                padding: 20px;
+            }
+
+            .container h1 {
+                font-size: 2em;
+            }
+
+            .message {
+                font-size: 1.1em;
+            }
+
+            .start-audio {
+                font-size: 1.1em;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                font-size: 1.8em;
+            }
+
+            .container {
+                width: 95%;
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            .container h1 {
+                font-size: 1.8em;
+            }
+
+            .message {
+                font-size: 1em;
+            }
+
+            .start-audio {
+                font-size: 1em;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        BESTESTTTTTT Wishes ✍️💌
+    </header>
+
+    <!-- Audio Controls -->
+    <button class="start-audio" id="startButton">🎵 Start Music</button>
+    <audio id="background-audio" loop>
+        <source src="images/audio.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+        <h1>Happist Birthday to my one and only....</h1>
+        <div class="message">
+            From the very first ‘hi’ we exchanged on our first day of college to the countless memories we’ve created, who knew that one random conversation would lead to such a deep and unshakable bond? Back then, we were two strangers on completely different paths—me, trying to dive into every college adventure possible, and you, staying far away from all the unnecessary drama. Yet somehow, life kept bringing us back to each other.
+
+            I’ll never forget the time you helped me through one of the worst phases of my life. When I was lost and didn’t know who to turn to, you were there. That’s when I realized what a pure and kind soul you are. Slowly, through all the chaos, heartbreaks, and unexpected moments, we found a friendship that became the strongest foundation of our college life.
+
+            We’ve shared everything, from silly crushes and embarrassing moments to our deepest dreams and fears. Remember how we used to laugh so hard that we cried, finishing each other’s sentences like we could read each other’s minds? From Holi celebrations with water bottles to exam hall adventures, from supporting each other through heartbreaks to giving shoulders to cry on, we’ve truly done it all.
+
+            But life isn’t always fair, is it? We faced challenges that tested our bond in ways we never imagined. Misunderstandings and life’s chaos pulled us apart when we needed each other the most. The same people who once healed each other’s wounds ended up being the cause of pain. It was hard—so hard—to see our friendship fall apart. But you know what? Neither of us ever wanted to let go. No matter how angry, hurt, or broken we felt, we both knew that letting each other go was never an option.
+
+            And here we are today, standing stronger than ever. After everything we’ve been through, we’ve chosen love, trust, and respect for each other over and over again.
+
+            There are moments in life when you come across someone who changes everything. For me, that person is you. You’ve been my anchor in a sea of uncertainty, my light in moments of darkness, and my strength when I felt weak. It’s hard to put into words just how much you’ve shaped who I am today. You've seen me at my worst, yet you’ve always accepted me, loved me, and stood by me. The bond we share is rare, one that can’t be broken by time or distance.
+
+            Sometimes, I sit back and think about all the things we’ve been through together. The laughs, the tears, the endless late night talks, and all those small moments that no one else will ever truly understand, those are the moments that make me realize just how blessed I am to have you in my life. No one else gets me the way you do. You’ve taught me the value of unconditional love, loyalty, and what it means to truly be there for someone, through thick and thin. I can’t imagine a future without you by my side. You’re not just my best friend, you’re a part of me. You mean the world to me in ways I can never fully express. You’re not just my best friend; you’re my safe space, my partner in crime, my biggest cheerleader, and my forever family.
+
+            So, on your special day, I want you to know how much you mean to me. You deserve every bit of happiness this world has to offer. May this year bring you all the joy, success, and love your heart desires. And no matter where life takes us, one thing will never change, I’ll always have your back, just like you’ve always had mine.
+
+            Here’s to many more years of laughter, adventures, and being each other’s rock. Happy Birthday, my precious bestie! Words will never be enough to describe what you mean to me, but I hope this small message can show you a fraction of the love I have for you. Love you to the moon and back.
+        </div>
+        
+        <a href="video msg.html" class="button">Ummm..SOMETHING IS COOKINGGGG 💌</a>
+    </div>
+
+    <div class="confetti" id="confetti"></div>
+
+    <footer class="footer">
+        Made with ❤️ by Your Best Friend
+    </footer>
+
+    <script>
+        // Confetti Animation
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            const colors = ['#ff99aa', '#ffffff', '#ff3366', '#ffcc33', '#66ff99'];
+
+            setInterval(() => {
+                const confetto = document.createElement('div');
+                confetto.classList.add('confetti-piece');
+                const size = Math.random() * 10 + 5;
+                const left = Math.random() * window.innerWidth;
+                const animationDuration = Math.random() * 3 + 2;
+
+                confetto.style.width = `${size}px`;
+                confetto.style.height = `${size}px`;
+                confetto.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetto.style.left = `${left}px`;
+                confetto.style.animationDuration = `${animationDuration}s`;
+
+                confettiContainer.appendChild(confetto);
+
+                // Remove confetto after animation
+                setTimeout(() => {
+                    confetto.remove();
+                }, animationDuration * 1000);
+            }, 100);
+        }
+
+        // Play audio on button click
+        document.getElementById('startButton').addEventListener('click', () => {
+            const audio = document.getElementById('background-audio');
+            audio.play();
+        });
+
+        // Start confetti
+        createConfetti();
+    </script>
+
+</body>
+</html>

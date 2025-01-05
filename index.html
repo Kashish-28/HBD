@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi Bestiee!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+    font-family: 'Montserrat', sans-serif;
+    background: url("images/Business Event Website.png"); /* Use relative path */
+    background-size: cover; /* Adjusted to cover the entire page */
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    position: relative;
+    cursor: url('path/to/cursor-image.png'), auto;
+    scroll-behavior: smooth;
+}
+
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            text-align: center;
+            background-color: #f2c854;
+            padding: 20px 0;
+            font-size: 2em;
+            font-family: 'Sacramento', cursive;
+            font-weight: bold;
+            position: relative;
+            animation: slideDown 1.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .container {
+            text-align: center;
+            padding: 25px 15px;
+            background-color: rgba(255, 99, 170, 0.7);
+            border-radius: 10px;
+            margin-top: 50px;
+            margin-left: 60px;
+            margin-right: 60px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .container h1 {
+            color: #ffffff;
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: bounceIn 1s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: translateY(-30px); opacity: 0; }
+            60% { transform: translateY(10px); opacity: 1; }
+            100% { transform: translateY(0); }
+        }
+
+        .container p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 99, 170, 0.8);
+            color: white;
+            font-size: 1.2em;
+            margin-top: 50px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .greeting-card {
+            position: relative;
+            width: 80%;
+            max-width: 500px;
+            margin: 50px auto;
+            background: linear-gradient(145deg, #ff6699, #ff3366);
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+            transform: scale(1);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            cursor: pointer;
+            overflow: hidden;
+            animation: popIn 0.6s ease-out;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .greeting-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .greeting-card .front {
+            background: #ff6699;
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            border-bottom: 5px solid #ff3366;
+            transition: transform 0.5s ease;
+        }
+
+        .greeting-card .front:hover {
+            background: #ff3366;
+        }
+
+        .greeting-card .back {
+            background: #fff;
+            padding: 30px;
+            color: #333;
+            display: none;
+            text-align: center;
+            font-size: 1.5em;
+            border-top: 5px solid #ff6699;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .greeting-card.open .front {
+            transform: rotateY(180deg);
+        }
+
+        .greeting-card.open .back {
+            display: block;
+            transform: rotateY(0);
+        }
+
+        .greeting-card .gift-photo {
+            max-width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .start-button {
+            display: block;
+            width: 200px;
+            padding: 5px;
+            font-size: 1.5em;
+            color: white;
+            background-color: #ff3366;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px auto;
+            text-align: center;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .start-button:hover {
+            transform: scale(1.1);
+            background-color: #ff6699;
+        }
+
+        #progressBarContainer {
+            width: 100%;
+            height: 10px;
+            background-color: #ddd;
+        }
+
+        #progressBar {
+            width: 0%;
+            height: 100%;
+            background-color: #ff3366;
+            transition: width 2s ease-in-out;
+        }
+
+        @keyframes explode {
+            0% { transform: translate(0, 0); opacity: 1; }
+            100% { transform: translate(calc(50vw - 50%), calc(50vh - 50%)); opacity: 0; }
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px); opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        🎉 Hi Bestiee! 🎂
+    </header>
+
+    <div class="container">
+        <h1>🎈 A little Surprise for You! 🎉</h1>
+        <p>Because you're my best friend (You consider me or not but ik I am) , here's something to make your day extra special! 💖</p>
+    </div>
+
+    <!-- Greeting Card Section -->
+    <div class="greeting-card" id="greetingCard">
+        <div class="front" onclick="openGreetingCard()">Open My Birthday Wishes🎁</div>
+        <div class="back">
+            <p>Happy Birthday Sweetiepie! 🎉</p>
+            <p>You are such an amazing person and so kind! I can't do much because of this online thing, but here’s my little gesture to let you know how important you are for us. 💖</p>
+            <img src="images/pic.jpg" alt="Friend Photo" class="gift-photo">
+            <!-- "Start" button below the photo -->
+            <a href="journey1.html" class="start-button">Let’s Begin</a>
+        </div>
+    </div>
+
+    <footer>
+        Made with ❤️ by Your Best Friend
+    </footer>
+
+    <!-- Confetti Animation -->
+    <div class="confetti" id="confetti"></div>
+
+    <!-- Progress Bar -->
+    <div id="progressBarContainer">
+        <div id="progressBar"></div>
+    </div>
+
+    <audio id="birthdayMusic" src="images/audio.mp3" loop autoplay></audio>
+
+    <script>
+        // Confetti Animation
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            const colors = ['#ff3366', '#ff99cc', '#66ff66', '#ffcc33', '#33ccff'];
+            
+            setInterval(() => {
+                const confetto = document.createElement('div');
+                const size = Math.random() * 10 + 10;
+                const left = Math.random() * window.innerWidth;
+                const animationDuration = Math.random() * 2 + 3;
+
+                confetto.style.position = 'absolute';
+                confetto.style.left = `${left}px`;
+                confetto.style.top = '0';
+                confetto.style.width = `${size}px`;
+                confetto.style.height = `${size}px`;
+                confetto.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetto.style.borderRadius = '50%';
+                confetto.style.opacity = 0.8;
+                confetto.style.animation = `fall ${animationDuration}s ease-in-out infinite`;
+
+                confettiContainer.appendChild(confetto);
+
+                // Remove the confetti after the animation is complete
+                setTimeout(() => {
+                    confetto.remove();
+                }, animationDuration * 1000);
+            }, 100);
+        }
+
+        // Function to explode confetti
+        function explodeConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            for (let i = 0; i < 100; i++) {
+                const confetto = document.createElement('div');
+                confetto.style.position = 'absolute';
+                confetto.style.left = `${Math.random() * window.innerWidth}px`;
+                confetto.style.top = `${Math.random() * window.innerHeight}px`;
+                confetto.style.width = `${Math.random() * 15 + 10}px`;
+                confetto.style.height = confetto.style.width;
+                confetto.style.backgroundColor = ['#ff3366', '#ff99cc', '#66ff66'][Math.floor(Math.random() * 3)];
+                confetto.style.borderRadius = '50%';
+                confetto.style.opacity = 1;
+                confetto.style.animation = `explode ${Math.random() * 2 + 3}s ease-out forwards`;
+
+                confettiContainer.appendChild(confetto);
+
+                setTimeout(() => {
+                    confetto.remove();
+                }, 3000);
+            }
+        }
+
+        // Parallax Scrolling Effect
+        let scrollY = 0;
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+            const header = document.getElementById('header');
+            header.style.transform = `translateY(${scrollY * 0.2}px)`;
+        });
+
+        // Function to open the greeting card
+        function openGreetingCard() {
+            const greetingCard = document.getElementById('greetingCard');
+            greetingCard.classList.toggle('open');
+            document.getElementById('birthdayMusic').play();
+            explodeConfetti(); // Trigger confetti explosion on card click
+        }
+
+        // Initialize confetti
+        createConfetti();
+
+        // Progress bar animation
+        setTimeout(() => {
+            document.getElementById('progressBar').style.width = '100%';
+        }, 500); // Start after 0.5 seconds delay
+    </script>
+
+</body>
+</html>

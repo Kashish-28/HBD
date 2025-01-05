@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Celebrate!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url("images/background.png");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .background-decor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+            animation: fadeIn 1s ease-in-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .banner {
+            text-align: center;
+            margin: 0 auto;
+            padding: 20px;
+            font-size: 3em;
+            position: relative;
+            z-index: 1;
+            display: none;
+            animation: fadeIn 1s ease-in-out, shimmer 2s infinite alternate;
+            animation-delay: 1s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .cake-container {
+            text-align: center;
+            margin-top: 20px;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            z-index: 1;
+            display: none;
+            animation: fadeIn 1s ease-in-out, zoomIn 1s ease-in-out;
+            animation-delay: 2s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .cake-container img {
+            max-width: 80%;
+            height: auto;
+        }
+
+        .message-container {
+            text-align: center;
+            font-size: 2em;
+            margin-top: -120px;
+            margin-left: 29%;
+            margin-right: 20%;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 15px;
+            color: #ff4081;
+            display: none;
+           
+        }
+
+        .gift-button {
+            position: fixed;
+            bottom: 30px;
+            left: 87%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 1.5em;
+            background: linear-gradient(90deg, #ff99cc, #ff4081);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.5);
+            z-index: 10;
+            display: none;
+        }
+
+        .gift-button:hover {
+            background: linear-gradient(90deg, #ff4081, #ff99cc);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes shimmer {
+            from {
+                text-shadow: 0 0 10px #ff4081, 0 0 20px #ff4081;
+            }
+            to {
+                text-shadow: 0 0 20px #ff99cc, 0 0 30px #ff99cc;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: translateX(-50%) scale(0);
+            }
+            to {
+                transform: translateX(-50%) scale(1);
+            }
+        }
+
+        #celebrate-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px 30px;
+            font-size: 2em;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        #celebrate-button:hover {
+            background-color: #e0356f;
+        }
+
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 9999;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff99aa;
+            border-radius: 50%;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="background-audio" loop>
+        <source src="images/audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Let's Celebrate Button -->
+    <button id="celebrate-button">Let's Celebrate</button>
+
+    <div class="background-decor"></div>
+
+    <div class="banner">
+        <img src="images/banner.png" alt="Banner">
+    </div>
+
+    <div class="cake-container">
+        <img src="images/cake 2.png" alt="Cake">
+    </div>
+
+    <div class="message-container" id="message-container">
+        <p>"Make a Wish!"</p>
+    </div>
+
+    <a href="gift.html" class="gift-button" id="gift-button">Gift Time</a>
+    
+
+    <div class="confetti" id="confetti"></div>
+    <canvas class="fireworks" id="fireworksCanvas"></canvas>
+
+    <script>
+        // Fireworks Animation
+        const canvas = document.getElementById('fireworksCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        function createFirework(x, y, colors) {
+            const particles = [];
+            for (let i = 0; i < 100; i++) {
+                particles.push({
+                    x: x,
+                    y: y,
+                    angle: Math.random() * 2 * Math.PI,
+                    speed: Math.random() * 4 + 2,
+                    radius: Math.random() * 2 + 1,
+                    color: colors[Math.floor(Math.random() * colors.length)]
+                });
+            }
+
+            return particles;
+        }
+
+        function drawFirework(particles) {
+            particles.forEach((particle, index) => {
+                particle.x += Math.cos(particle.angle) * particle.speed;
+                particle.y += Math.sin(particle.angle) * particle.speed;
+                particle.radius *= 0.96;
+
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.radius, 0, 2 * Math.PI);
+                ctx.fillStyle = particle.color;
+                ctx.fill();
+
+                if (particle.radius < 0.5) {
+                    particles.splice(index, 1);
+                }
+            });
+        }
+
+        function triggerFirework() {
+            const colors = ['#ff4081', '#ffcc33', '#66ff99', '#99ccff', '#cc99ff'];
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height / 2;
+            const particles = createFirework(x, y, colors);
+
+            const interval = setInterval(() => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawFirework(particles);
+                if (particles.length === 0) {
+                    clearInterval(interval);
+                }
+            }, 16);
+        }
+
+        // Confetti Animation
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            const colors = ['#ff99aa', '#ffffff', '#ff3366', '#ffcc33', '#66ff99'];
+
+            setInterval(() => {
+                const confettiPiece = document.createElement('div');
+                confettiPiece.className = 'confetti-piece';
+                confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confettiPiece.style.left = Math.random() * window.innerWidth + 'px';
+                confettiPiece.style.animationDuration = Math.random() * 3 + 2 + 's';
+
+                confettiContainer.appendChild(confettiPiece);
+
+                setTimeout(() => {
+                    confettiContainer.removeChild(confettiPiece);
+                }, 5000);
+            }, 100);
+        }
+
+        // Event Listeners
+        document.getElementById('celebrate-button').addEventListener('click', () => {
+    document.getElementById('celebrate-button').style.display = 'none';
+    document.getElementById('background-audio').play();
+    document.querySelector('.banner').style.display = 'block';
+    document.querySelector('.cake-container').style.display = 'block';
+    
+    // Delay to show the message after the cake animation
+    setTimeout(() => {
+        document.querySelector('.message-container').style.display = 'block';
+    }, 3000); // Adjust the delay to match the animation timing
+
+    createConfetti();
+    triggerFirework();
+
+    // Show Gift Button After All Animations
+    setTimeout(() => {
+        document.getElementById('gift-button').style.display = 'block';
+    }, 5000); // Delay to ensure all animations complete
+});
+
+
+    </script>
+</body>
+</html>
